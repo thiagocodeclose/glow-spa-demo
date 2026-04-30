@@ -1,0 +1,88 @@
+export const siteData = {
+  gym: {
+    name: 'Glow Wellness',
+    tagline: 'Recovery · Float · Holistic Spa',
+    location: 'Portland, OR',
+    address: '422 NW 23rd Ave, Portland, OR 97210',
+    phone: '(503) 555-0218',
+    email: 'hello@glowwellness.com',
+  },
+  stats: [
+    { value: '8', label: 'Treatment Rooms' },
+    { value: '60+', label: 'Service Options' },
+    { value: '4.9★', label: 'Member Rating' },
+    { value: '2019', label: 'Est.' },
+  ],
+  services: [
+    {
+      category: 'Float Therapy',
+      icon: '🫧',
+      title: 'Sensory Deprivation Float',
+      duration: '60 or 90 min',
+      desc: 'Zero-gravity floating in 1,000 lbs of Epsom salt solution. Complete sensory silence for deep nervous system reset, pain relief, and altered state access.',
+    },
+    {
+      category: 'Infrared Sauna',
+      icon: '☀️',
+      title: 'Private Infrared Sauna',
+      duration: '40 min',
+      desc: 'Far-infrared wavelengths penetrate muscle and fat tissue, triggering deep cellular detox. Unlike traditional sauna — radiant heat, not air heat.',
+    },
+    {
+      category: 'Massage',
+      icon: '🤲',
+      title: 'Deep Tissue Massage',
+      duration: '60 or 90 min',
+      desc: 'Slow, targeted work through layers of connective tissue. Releases chronic holding patterns and restores structural balance.',
+    },
+    {
+      category: 'Cryotherapy',
+      icon: '❄️',
+      title: 'Whole-Body Cryo',
+      duration: '3 min',
+      desc: 'Controlled exposure to -250°F nitrogen vapor. Reduces systemic inflammation, accelerates recovery, elevates mood via norepinephrine release.',
+    },
+    {
+      category: 'Sound Bath',
+      icon: '🔔',
+      title: 'Tibetan Sound Immersion',
+      duration: '75 min',
+      desc: 'Immersive sound therapy with singing bowls and crystal instruments. Induces theta brainwave states — the boundary between wake and deep sleep.',
+    },
+    {
+      category: 'Red Light',
+      icon: '🔴',
+      title: 'Red Light Panel Session',
+      duration: '20 min',
+      desc: 'Photobiomodulation at 660nm and 850nm wavelengths. Stimulates mitochondrial ATP production, collagen synthesis, and cellular repair.',
+    },
+  ],
+  rituals: [
+    { name: 'The Restoration', duration: '3 hours', includes: 'Float · Infrared · Massage', desc: 'Our signature full-body reset ritual. Float first to decompress the nervous system, then infrared to open circulation, then deep tissue to complete the release.', price: '$295' },
+    { name: 'The Clarity Day', duration: '4 hours', includes: 'Cryo · Float · Sound Bath · Red Light', desc: 'Designed for mental clarity and emotional reset. Cold exposure sharpens focus, floating quiets the noise, sound induces meditative depth.', price: '$375' },
+    { name: 'Recovery Protocol', duration: '2 hours', includes: 'Cryo · Infrared · Massage', desc: 'For athletes, post-surgery recovery, or chronic pain. Clinical in design, transformative in result.', price: '$235' },
+  ],
+  pricing: [
+    {
+      name: 'Single Service',
+      price: 'À la carte',
+      period: 'per session',
+      features: ['Choose any one service', 'Complimentary tea lounge', 'Shower & amenities', 'Online booking'],
+      highlight: false,
+    },
+    {
+      name: 'Glow Membership',
+      price: '$199',
+      period: 'per month',
+      features: ['4 services / month', 'Rollover up to 2 credits', '20% off additional services', 'Priority weekend booking', 'Guest pass (1/month)'],
+      highlight: true,
+    },
+    {
+      name: 'Ritual Package',
+      price: '$259',
+      period: 'per ritual session',
+      features: ['3–4 hour curated ritual', 'Includes 3–4 services', 'Private suite reserved', 'Complimentary intention card', 'Available any day'],
+      highlight: false,
+    },
+  ],
+};

@@ -1,0 +1,346 @@
+<!DOCTYPE html><html lang="en" class="__variable_589abc __variable_f367f3"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/_next/static/media/7b89a4fd5e90ede0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="preload" href="/_next/static/media/e18f83c737786aa7-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="preload" href="/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/_next/static/css/d925bbbf87295abf.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/webpack-9c28866fdfa5f96a.js"/><script src="/_next/static/chunks/fd9d1056-49ca28257eb7a92c.js" async=""></script><script src="/_next/static/chunks/117-8db81c3126b3333a.js" async=""></script><script src="/_next/static/chunks/main-app-6d4b4d2bb1ae18bd.js" async=""></script><script src="/_next/static/chunks/app/page-4bdd7f932a99e0f8.js" async=""></script><title>Glow Wellness — Recovery · Float · Holistic Spa</title><meta name="description" content="Portland&#x27;s premier recovery studio. Float therapy, infrared sauna, cryotherapy, massage, and curated wellness rituals."/><meta name="next-size-adjust"/><script src="/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script></head><body><style>
+  :root {
+    --gl-bg: #0A0A12;
+    --gl-surface: #12121F;
+    --gl-card: #181825;
+    --gl-primary: #7B5EA7;
+    --gl-primary-light: #9B82C3;
+    --gl-accent: #B09FD4;
+    --gl-gold: #C9A96E;
+    --gl-text: #F0EEF8;
+    --gl-muted: rgba(240,238,248,0.55);
+    --gl-border: rgba(176,159,212,0.12);
+    --font-display: var(--font-cormorant), 'Cormorant Garamond', serif;
+    --font-body: var(--font-inter), 'Inter', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--gl-bg); color: var(--gl-text); overflow-x: hidden; }
+
+  /* ─── NAV ─── */
+  .gl-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem; height: 70px;
+    transition: background 0.5s, box-shadow 0.5s;
+  }
+  .gl-nav.scrolled {
+    background: rgba(10,10,18,0.95);
+    box-shadow: 0 1px 28px rgba(123,94,167,0.15);
+    backdrop-filter: blur(16px);
+  }
+  .gl-nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.6rem; font-weight: 300;
+    color: var(--gl-text); text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+  .gl-nav-logo span { color: var(--gl-accent); font-style: italic; }
+  .gl-nav-links { display: flex; gap: 2rem; align-items: center; }
+  .gl-nav-links a {
+    font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(240,238,248,0.7); text-decoration: none; transition: color 0.2s;
+  }
+  .gl-nav-links a:hover { color: var(--gl-accent); }
+  .gl-btn-nav {
+    border: 1px solid var(--gl-accent);
+    color: var(--gl-accent);
+    padding: 0.5rem 1.4rem; border-radius: 2px;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; transition: background 0.2s, color 0.2s;
+  }
+  .gl-btn-nav:hover { background: var(--gl-accent); color: var(--gl-bg); }
+
+  /* ─── CINEMATIC VIDEO HERO ─── */
+  .gl-video-hero {
+    position: relative;
+    height: 68vh;
+    min-height: 520px;
+    overflow: hidden;
+  }
+  .gl-video-hero video {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .gl-video-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(10,10,18,0.1) 0%,
+      rgba(10,10,18,0.25) 50%,
+      rgba(10,10,18,0.92) 100%
+    );
+  }
+  .gl-video-center {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+  }
+  .gl-video-wordmark {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    font-weight: 300; font-style: italic;
+    color: rgba(240,238,248,0.92);
+    letter-spacing: 0.06em;
+    text-shadow: 0 2px 40px rgba(123,94,167,0.35);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* ─── HERO CONTENT (below video, on dark bg) ─── */
+  .gl-hero-content {
+    background: var(--gl-bg);
+    padding: 4rem 2rem 5rem;
+    text-align: center;
+    position: relative;
+  }
+  .gl-hero-content::before {
+    content: '';
+    position: absolute; top: -80px; left: 0; right: 0; height: 80px;
+    background: linear-gradient(to bottom, transparent, var(--gl-bg));
+    pointer-events: none;
+  }
+  .gl-hero-content-inner { max-width: 720px; margin: 0 auto; }
+  .gl-hero-tag {
+    display: inline-block;
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--gl-gold);
+    margin-bottom: 1.5rem;
+  }
+  .gl-hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+    font-weight: 300; line-height: 1.15;
+    color: var(--gl-text); margin-bottom: 1.25rem;
+    letter-spacing: 0.01em;
+  }
+  .gl-hero-title em { font-style: italic; color: var(--gl-accent); }
+  .gl-hero-sub { font-size: 1.05rem; line-height: 1.8; color: var(--gl-muted); margin-bottom: 2.75rem; }
+  .gl-hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .gl-btn-primary {
+    background: var(--gl-primary); color: #fff;
+    padding: 0.9rem 2.25rem; border-radius: 2px;
+    font-weight: 600; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none; transition: background 0.2s, transform 0.2s;
+  }
+  .gl-btn-primary:hover { background: var(--gl-primary-light); transform: translateY(-2px); }
+  .gl-btn-outline {
+    border: 1px solid rgba(176,159,212,0.4); color: var(--gl-accent);
+    padding: 0.9rem 2.25rem; border-radius: 2px;
+    font-weight: 600; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none; transition: border-color 0.2s, background 0.2s;
+  }
+  .gl-btn-outline:hover { border-color: var(--gl-accent); background: rgba(176,159,212,0.08); }
+
+  /* ─── STATS STRIP ─── */
+  .gl-stats-strip { background: var(--gl-surface); padding: 2.5rem 2rem; }
+  .gl-stats-inner {
+    max-width: 800px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; text-align: center;
+  }
+  .gl-stat-value {
+    font-family: var(--font-display);
+    font-size: 2.4rem; font-weight: 300;
+    color: var(--gl-accent); margin-bottom: 0.3rem;
+  }
+  .gl-stat-label { font-size: 0.72rem; color: var(--gl-muted); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 6rem 2rem; }
+  .gl-section-tag {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gl-gold); margin-bottom: 0.75rem; display: inline-block;
+  }
+  .gl-section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+    font-weight: 300; line-height: 1.15;
+    color: var(--gl-text); margin-bottom: 1rem; letter-spacing: 0.01em;
+  }
+  .gl-section-title em { font-style: italic; color: var(--gl-accent); }
+  .gl-section-sub { font-size: 1rem; line-height: 1.8; color: var(--gl-muted); max-width: 540px; }
+
+  /* ─── SERVICES ─── */
+  .gl-services-section { background: var(--gl-bg); }
+  .gl-services-inner { max-width: 1200px; margin: 0 auto; }
+  .gl-services-header { margin-bottom: 3.5rem; }
+  .gl-services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px;
+    background: var(--gl-border);
+    border: 1px solid var(--gl-border);
+    border-radius: 12px; overflow: hidden;
+  }
+  .gl-service-cell {
+    background: var(--gl-card);
+    padding: 2.5rem 2rem;
+    transition: background 0.25s;
+  }
+  .gl-service-cell:hover { background: var(--gl-surface); }
+  .gl-service-icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
+  .gl-service-cat {
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gl-accent); margin-bottom: 0.5rem;
+  }
+  .gl-service-name {
+    font-family: var(--font-display);
+    font-size: 1.25rem; font-weight: 400;
+    color: var(--gl-text); margin-bottom: 0.35rem;
+  }
+  .gl-service-dur { font-size: 0.8rem; color: var(--gl-muted); margin-bottom: 0.85rem; }
+  .gl-service-desc { font-size: 0.9rem; line-height: 1.7; color: var(--gl-muted); }
+
+  /* ─── RITUALS ─── */
+  .gl-rituals-section { background: var(--gl-surface); }
+  .gl-rituals-inner { max-width: 1100px; margin: 0 auto; }
+  .gl-rituals-header { text-align: center; margin-bottom: 3.5rem; }
+  .gl-rituals-header .gl-section-sub { margin: 0 auto; }
+  .gl-rituals-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .gl-ritual-card {
+    background: var(--gl-card);
+    border: 1px solid var(--gl-border);
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: box-shadow 0.25s, transform 0.25s;
+  }
+  .gl-ritual-card:hover { box-shadow: 0 16px 48px rgba(123,94,167,0.15); transform: translateY(-4px); }
+  .gl-ritual-name {
+    font-family: var(--font-display);
+    font-size: 1.45rem; font-weight: 400; font-style: italic;
+    color: var(--gl-text); margin-bottom: 0.4rem;
+  }
+  .gl-ritual-includes {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gl-accent); margin-bottom: 0.5rem;
+  }
+  .gl-ritual-dur { font-size: 0.85rem; color: var(--gl-muted); margin-bottom: 1rem; }
+  .gl-ritual-desc { font-size: 0.92rem; line-height: 1.72; color: var(--gl-muted); margin-bottom: 1.75rem; }
+  .gl-ritual-price {
+    font-family: var(--font-display);
+    font-size: 2rem; color: var(--gl-gold); display: block; margin-bottom: 1.25rem;
+  }
+  .gl-ritual-cta {
+    display: block; text-align: center;
+    border: 1px solid rgba(176,159,212,0.25); color: var(--gl-accent);
+    padding: 0.75rem; border-radius: 2px;
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; transition: background 0.2s, border-color 0.2s;
+  }
+  .gl-ritual-cta:hover { background: rgba(176,159,212,0.1); border-color: var(--gl-accent); }
+
+  /* ─── PRICING ─── */
+  .gl-pricing-section { background: var(--gl-bg); }
+  .gl-pricing-inner { max-width: 1100px; margin: 0 auto; }
+  .gl-pricing-header { text-align: center; margin-bottom: 3.5rem; }
+  .gl-pricing-header .gl-section-sub { margin: 0 auto; }
+  .gl-pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .gl-price-card {
+    background: var(--gl-card);
+    border: 1px solid var(--gl-border);
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: box-shadow 0.25s, transform 0.25s;
+  }
+  .gl-price-card.highlight { border-color: var(--gl-primary); }
+  .gl-price-card:hover { box-shadow: 0 16px 48px rgba(123,94,167,0.14); transform: translateY(-4px); }
+  .gl-popular-badge {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--gl-primary); color: #fff;
+    font-size: 0.65rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.25rem 1rem; border-radius: 20px;
+  }
+  .gl-price-name {
+    font-family: var(--font-display);
+    font-size: 1.2rem; font-weight: 400; color: var(--gl-text); margin-bottom: 1rem;
+  }
+  .gl-price-amount {
+    font-family: var(--font-display);
+    font-size: 2.6rem; color: var(--gl-accent); line-height: 1; margin-bottom: 0.25rem;
+  }
+  .gl-price-period { font-size: 0.85rem; color: var(--gl-muted); margin-bottom: 1.75rem; }
+  .gl-price-features { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; }
+  .gl-price-features li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.9rem; color: var(--gl-muted); line-height: 1.5; }
+  .gl-check { color: var(--gl-primary-light); font-weight: 700; flex-shrink: 0; }
+  .gl-price-cta {
+    display: block; text-align: center;
+    padding: 0.85rem; border-radius: 2px;
+    font-weight: 600; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .gl-price-card.highlight .gl-price-cta { background: var(--gl-primary); color: #fff; }
+  .gl-price-card.highlight .gl-price-cta:hover { background: var(--gl-primary-light); }
+  .gl-price-card:not(.highlight) .gl-price-cta { border: 1px solid rgba(176,159,212,0.25); color: var(--gl-accent); }
+  .gl-price-card:not(.highlight) .gl-price-cta:hover { background: rgba(176,159,212,0.08); border-color: var(--gl-accent); }
+
+  /* ─── CTA ─── */
+  .gl-cta-section {
+    background: var(--gl-surface);
+    padding: 6rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .gl-cta-section::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(123,94,167,0.12) 0%, transparent 100%);
+    pointer-events: none;
+  }
+  .gl-cta-inner { max-width: 560px; margin: 0 auto; position: relative; }
+  .gl-cta-eyebrow {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--gl-gold); margin-bottom: 1.25rem;
+  }
+  .gl-cta-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4vw, 3.6rem);
+    font-weight: 300; color: var(--gl-text);
+    line-height: 1.15; margin-bottom: 1rem;
+  }
+  .gl-cta-title em { font-style: italic; color: var(--gl-accent); }
+  .gl-cta-sub { font-size: 1rem; color: var(--gl-muted); margin-bottom: 2.5rem; line-height: 1.75; }
+  .gl-btn-cta {
+    background: var(--gl-primary); color: #fff;
+    padding: 1rem 2.75rem; border-radius: 2px;
+    font-weight: 700; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; display: inline-block;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .gl-btn-cta:hover { background: var(--gl-primary-light); transform: translateY(-2px); }
+
+  /* ─── FOOTER ─── */
+  .gl-footer { background: #060610; padding: 4rem 2rem 2rem; }
+  .gl-footer-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem;
+  }
+  .gl-footer-logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 300; color: var(--gl-accent); margin-bottom: 0.75rem; font-style: italic; }
+  .gl-footer-desc { font-size: 0.9rem; line-height: 1.6; color: var(--gl-muted); max-width: 280px; }
+  .gl-footer-h { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(240,238,248,0.3); margin-bottom: 1rem; }
+  .gl-footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+  .gl-footer-links a { color: var(--gl-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+  .gl-footer-links a:hover { color: var(--gl-accent); }
+  .gl-footer-bottom {
+    max-width: 1200px; margin: 2.5rem auto 0;
+    padding-top: 2rem; border-top: 1px solid rgba(176,159,212,0.08);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.78rem; color: var(--gl-muted); flex-wrap: wrap; gap: 0.5rem;
+  }
+  .gl-footer-brand { color: var(--gl-accent); text-decoration: none; font-weight: 600; }
+
+  /* ─── REVEAL ─── */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .gl-services-grid { grid-template-columns: 1fr; }
+    .gl-rituals-grid { grid-template-columns: 1fr; }
+    .gl-pricing-grid { grid-template-columns: 1fr; }
+    .gl-stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .gl-footer-inner { grid-template-columns: 1fr; }
+    .gl-nav-links { display: none; }
+  }
+</style><nav class="gl-nav"><a href="#" class="gl-nav-logo">Glow <span>Wellness</span></a><div class="gl-nav-links"><a href="#services">Services</a><a href="#rituals">Rituals</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a><a href="#book" class="gl-btn-nav">Book Now</a></div></nav><div class="gl-video-hero"><video autoPlay="" muted="" loop="" playsInline="" poster="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=1800&amp;q=80"><source src="https://assets.mixkit.co/videos/preview/mixkit-woman-meditating-in-a-studio-with-candles-around-her-22756-large.mp4" type="video/mp4"/></video><div class="gl-video-overlay"></div><div class="gl-video-center"><div class="gl-video-wordmark">Glow</div></div></div><div class="gl-hero-content"><div class="gl-hero-content-inner"><div class="gl-hero-tag reveal">Recovery · Float · Holistic Spa · Portland, OR</div><h1 class="gl-hero-title reveal">Come in <em>stressed.</em><br/>Leave <em>restored.</em></h1><p class="gl-hero-sub reveal">Portland&#x27;s most intentional recovery studio. We offer float therapy, infrared sauna, cryotherapy, massage, and curated multi-modality rituals — all under one roof.</p><div class="gl-hero-actions reveal"><a href="#book" class="gl-btn-primary">Book a Session</a><a href="#rituals" class="gl-btn-outline">Explore Rituals</a></div></div></div><div class="gl-stats-strip"><div class="gl-stats-inner"><div class="reveal" style="transition-delay:0ms"><div class="gl-stat-value">8</div><div class="gl-stat-label">Treatment Rooms</div></div><div class="reveal" style="transition-delay:80ms"><div class="gl-stat-value">60+</div><div class="gl-stat-label">Service Options</div></div><div class="reveal" style="transition-delay:160ms"><div class="gl-stat-value">4.9★</div><div class="gl-stat-label">Member Rating</div></div><div class="reveal" style="transition-delay:240ms"><div class="gl-stat-value">2019</div><div class="gl-stat-label">Est.</div></div></div></div><section id="services" class="gl-services-section"><div class="gl-services-inner"><div class="gl-services-header reveal"><span class="gl-section-tag">Recovery Modalities</span><h2 class="gl-section-title">What we <em>offer</em></h2><p class="gl-section-sub">Each modality is powerful on its own. Combined intentionally, they create a cumulative effect that clients describe as transformative.</p></div><div class="gl-services-grid"><div class="gl-service-cell reveal" style="transition-delay:0ms"><div class="gl-service-icon">🫧</div><div class="gl-service-cat">Float Therapy</div><div class="gl-service-name">Sensory Deprivation Float</div><div class="gl-service-dur">60 or 90 min</div><p class="gl-service-desc">Zero-gravity floating in 1,000 lbs of Epsom salt solution. Complete sensory silence for deep nervous system reset, pain relief, and altered state access.</p></div><div class="gl-service-cell reveal" style="transition-delay:60ms"><div class="gl-service-icon">☀️</div><div class="gl-service-cat">Infrared Sauna</div><div class="gl-service-name">Private Infrared Sauna</div><div class="gl-service-dur">40 min</div><p class="gl-service-desc">Far-infrared wavelengths penetrate muscle and fat tissue, triggering deep cellular detox. Unlike traditional sauna — radiant heat, not air heat.</p></div><div class="gl-service-cell reveal" style="transition-delay:120ms"><div class="gl-service-icon">🤲</div><div class="gl-service-cat">Massage</div><div class="gl-service-name">Deep Tissue Massage</div><div class="gl-service-dur">60 or 90 min</div><p class="gl-service-desc">Slow, targeted work through layers of connective tissue. Releases chronic holding patterns and restores structural balance.</p></div><div class="gl-service-cell reveal" style="transition-delay:180ms"><div class="gl-service-icon">❄️</div><div class="gl-service-cat">Cryotherapy</div><div class="gl-service-name">Whole-Body Cryo</div><div class="gl-service-dur">3 min</div><p class="gl-service-desc">Controlled exposure to -250°F nitrogen vapor. Reduces systemic inflammation, accelerates recovery, elevates mood via norepinephrine release.</p></div><div class="gl-service-cell reveal" style="transition-delay:240ms"><div class="gl-service-icon">🔔</div><div class="gl-service-cat">Sound Bath</div><div class="gl-service-name">Tibetan Sound Immersion</div><div class="gl-service-dur">75 min</div><p class="gl-service-desc">Immersive sound therapy with singing bowls and crystal instruments. Induces theta brainwave states — the boundary between wake and deep sleep.</p></div><div class="gl-service-cell reveal" style="transition-delay:300ms"><div class="gl-service-icon">🔴</div><div class="gl-service-cat">Red Light</div><div class="gl-service-name">Red Light Panel Session</div><div class="gl-service-dur">20 min</div><p class="gl-service-desc">Photobiomodulation at 660nm and 850nm wavelengths. Stimulates mitochondrial ATP production, collagen synthesis, and cellular repair.</p></div></div></div></section><section id="rituals" class="gl-rituals-section"><div class="gl-rituals-inner"><div class="gl-rituals-header reveal"><span class="gl-section-tag">Curated Experiences</span><h2 class="gl-section-title">Glow <em>Rituals</em></h2><p class="gl-section-sub">Pre-designed multi-modality sequences, sequenced for maximum effect. Reserve a private suite for 2–4 hours of guided restoration.</p></div><div class="gl-rituals-grid"><div class="gl-ritual-card reveal" style="transition-delay:0ms"><div class="gl-ritual-name">The Restoration</div><div class="gl-ritual-includes">Float · Infrared · Massage</div><div class="gl-ritual-dur">3 hours</div><p class="gl-ritual-desc">Our signature full-body reset ritual. Float first to decompress the nervous system, then infrared to open circulation, then deep tissue to complete the release.</p><span class="gl-ritual-price">$295</span><a href="#book" class="gl-ritual-cta">Reserve This Ritual</a></div><div class="gl-ritual-card reveal" style="transition-delay:100ms"><div class="gl-ritual-name">The Clarity Day</div><div class="gl-ritual-includes">Cryo · Float · Sound Bath · Red Light</div><div class="gl-ritual-dur">4 hours</div><p class="gl-ritual-desc">Designed for mental clarity and emotional reset. Cold exposure sharpens focus, floating quiets the noise, sound induces meditative depth.</p><span class="gl-ritual-price">$375</span><a href="#book" class="gl-ritual-cta">Reserve This Ritual</a></div><div class="gl-ritual-card reveal" style="transition-delay:200ms"><div class="gl-ritual-name">Recovery Protocol</div><div class="gl-ritual-includes">Cryo · Infrared · Massage</div><div class="gl-ritual-dur">2 hours</div><p class="gl-ritual-desc">For athletes, post-surgery recovery, or chronic pain. Clinical in design, transformative in result.</p><span class="gl-ritual-price">$235</span><a href="#book" class="gl-ritual-cta">Reserve This Ritual</a></div></div></div></section><section id="pricing" class="gl-pricing-section"><div class="gl-pricing-inner"><div class="gl-pricing-header reveal"><span class="gl-section-tag">Membership &amp; Booking</span><h2 class="gl-section-title">Choose your <em>path</em></h2><p class="gl-section-sub">Book a single service, become a monthly member, or commit to a ritual experience. There&#x27;s an entry point for wherever you are.</p></div><div class="gl-pricing-grid"><div class="gl-price-card reveal" style="transition-delay:0ms"><div class="gl-price-name">Single Service</div><div class="gl-price-amount">À la carte</div><div class="gl-price-period">per session</div><ul class="gl-price-features"><li><span class="gl-check">✓</span>Choose any one service</li><li><span class="gl-check">✓</span>Complimentary tea lounge</li><li><span class="gl-check">✓</span>Shower &amp; amenities</li><li><span class="gl-check">✓</span>Online booking</li></ul><a href="#book" class="gl-price-cta">Get Started</a></div><div class="gl-price-card reveal highlight" style="transition-delay:100ms"><span class="gl-popular-badge">Best Value</span><div class="gl-price-name">Glow Membership</div><div class="gl-price-amount">$199</div><div class="gl-price-period">per month</div><ul class="gl-price-features"><li><span class="gl-check">✓</span>4 services / month</li><li><span class="gl-check">✓</span>Rollover up to 2 credits</li><li><span class="gl-check">✓</span>20% off additional services</li><li><span class="gl-check">✓</span>Priority weekend booking</li><li><span class="gl-check">✓</span>Guest pass (1/month)</li></ul><a href="#book" class="gl-price-cta">Get Started</a></div><div class="gl-price-card reveal" style="transition-delay:200ms"><div class="gl-price-name">Ritual Package</div><div class="gl-price-amount">$259</div><div class="gl-price-period">per ritual session</div><ul class="gl-price-features"><li><span class="gl-check">✓</span>3–4 hour curated ritual</li><li><span class="gl-check">✓</span>Includes 3–4 services</li><li><span class="gl-check">✓</span>Private suite reserved</li><li><span class="gl-check">✓</span>Complimentary intention card</li><li><span class="gl-check">✓</span>Available any day</li></ul><a href="#book" class="gl-price-cta">Get Started</a></div></div></div></section><section id="book" class="gl-cta-section"><div class="gl-cta-inner"><div class="gl-cta-eyebrow reveal">Begin Your Recovery Practice</div><h2 class="gl-cta-title reveal">Your first float is <em>on us.</em></h2><p class="gl-cta-sub reveal">Book any service at full price and receive a complimentary 60-minute float on your second visit. No catch — just our way of saying welcome.</p><a href="#pricing" class="gl-btn-cta reveal">Book Your First Session</a></div></section><footer id="contact" class="gl-footer"><div class="gl-footer-inner"><div><div class="gl-footer-logo">Glow Wellness</div><p class="gl-footer-desc">422 NW 23rd Ave, Portland, OR 97210<br/>(503) 555-0218<br/>hello@glowwellness.com</p></div><div><div class="gl-footer-h">Studio</div><ul class="gl-footer-links"><li><a href="#services">Services</a></li><li><a href="#rituals">Rituals</a></li><li><a href="#pricing">Membership</a></li><li><a href="#">Gift Cards</a></li></ul></div><div><div class="gl-footer-h">Help</div><ul class="gl-footer-links"><li><a href="#">New Visitors</a></li><li><a href="#">FAQs</a></li><li><a href="#">Contraindications</a></li><li><a href="#">Privacy Policy</a></li></ul></div></div><div class="gl-footer-bottom"><span>© <!-- -->2026<!-- --> Glow Wellness. All rights reserved.</span><span>Powered by <a href="https://koriva.com" class="gl-footer-brand">Koriva</a></span></div></footer><script src="/_next/static/chunks/webpack-9c28866fdfa5f96a.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/_next/static/media/7b89a4fd5e90ede0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/_next/static/media/e18f83c737786aa7-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n3:HL[\"/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n4:HL[\"/_next/static/css/d925bbbf87295abf.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"5:I[2846,[],\"\"]\n7:I[9107,[],\"ClientPageRoot\"]\n8:I[552,[\"931\",\"static/chunks/app/page-4bdd7f932a99e0f8.js\"],\"default\",1]\n9:I[4707,[],\"\"]\na:I[6423,[],\"\"]\nc:I[1060,[],\"\"]\nd:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L5\",null,{\"buildId\":\"C0Rbgus4nMc2GyHbl1gsF\",\"assetPrefix\":\"\",\"urlParts\":[\"\",\"\"],\"initialTree\":[\"\",{\"children\":[\"__PAGE__\",{}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"__PAGE__\",{},[[\"$L6\",[\"$\",\"$L7\",null,{\"props\":{\"params\":{},\"searchParams\":{}},\"Component\":\"$8\"}],null],null],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/d925bbbf87295abf.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"className\":\"__variable_589abc __variable_f367f3\",\"children\":[\"$\",\"body\",null,{\"children\":[\"$\",\"$L9\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$La\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}]}]}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lb\"],\"globalErrorComponent\":\"$c\",\"missingSlots\":\"$Wd\"}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"Glow Wellness — Recovery · Float · Holistic Spa\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\"Portland's premier recovery studio. Float therapy, infrared sauna, cryotherapy, massage, and curated wellness rituals.\"}],[\"$\",\"meta\",\"4\",{\"name\":\"next-size-adjust\"}]]\n6:null\n"])</script></body></html>
