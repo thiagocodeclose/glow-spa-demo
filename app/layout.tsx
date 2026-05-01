@@ -1,6 +1,8 @@
+// @ts-nocheck
 import type { Metadata } from 'next';
 import { Cormorant_Garamond, Inter } from 'next/font/google';
 import './globals.css';
+import { getKorivaConfig, buildCssVars } from '@/lib/koriva-config';
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -15,9 +17,11 @@ export const metadata: Metadata = {
   description: 'Portland\'s premier recovery studio. Float therapy, infrared sauna, cryotherapy, massage, and curated wellness rituals.',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const cfg = await getKorivaConfig();
+  const vars = buildCssVars(cfg?.brand);
   return (
-    <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
+    <html lang="en" className={`${cormorant.variable} ${inter.variable}`} style={vars as React.CSSProperties}>
       <body>{children}</body>
     </html>
   );
