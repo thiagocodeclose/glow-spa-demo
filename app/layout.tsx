@@ -4,6 +4,7 @@ import { Cormorant_Garamond, Inter } from 'next/font/google';
 import './globals.css';
 import { getKorivaConfig, buildCssVars } from '@/lib/koriva-config';
 
+import { KorivaLivePreview } from '@/components/KorivaLivePreview';
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
   weight: ['300', '400', '600'],
@@ -22,7 +23,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const vars = buildCssVars(cfg?.brand);
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable}`} style={vars as React.CSSProperties}>
-      <body>{children}</body>
+      <body>{children}<KorivaLivePreview /></body>
     </html>
   );
 }
