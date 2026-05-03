@@ -411,12 +411,12 @@ export default function GlowPage() {
           <h1 data-cg-el="hero_headline_1" className="gl-hero-title reveal">
             Come in <em>stressed.</em><br />Leave <em>restored.</em>
           </h1>
-          <p className="gl-hero-sub reveal">
+          <p data-cg-el="hero_subtitle" className="gl-hero-sub reveal">
             Portland&apos;s most intentional recovery studio. We offer float therapy, infrared sauna, cryotherapy, massage, and curated multi-modality rituals — all under one roof.
           </p>
           <div className="gl-hero-actions reveal">
-            <a href="#book" className="gl-btn-primary">Book a Session</a>
-            <a href="#rituals" className="gl-btn-outline">Explore Rituals</a>
+            <a data-cg-el="hero_cta_primary" href="#book" className="gl-btn-primary">Book a Session</a>
+            <a data-cg-el="hero_cta_secondary" href="#rituals" className="gl-btn-outline">Explore Rituals</a>
           </div>
         </div>
       </div>
