@@ -408,7 +408,7 @@ export default function GlowPage() {
       <div className="gl-hero-content">
         <div className="gl-hero-content-inner">
           <div className="gl-hero-tag reveal">Recovery · Float · Holistic Spa · Portland, OR</div>
-          <h1 className="gl-hero-title reveal">
+          <h1 data-cg-el="hero_headline_1" className="gl-hero-title reveal">
             Come in <em>stressed.</em><br />Leave <em>restored.</em>
           </h1>
           <p className="gl-hero-sub reveal">
