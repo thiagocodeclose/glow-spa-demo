@@ -5,6 +5,14 @@ import { createPortal } from "react-dom";
 declare global {
   interface Window {
     __KORIVA_ANIM_OBSERVER__?: IntersectionObserver;
+    __KORIVA_REGISTRY__?: Map<
+      string,
+      {
+        el?: HTMLElement;
+        defaults: Record<string, unknown>;
+        meta?: { section?: string; label?: string; type?: string };
+      }
+    >;
   }
 }
 
@@ -262,6 +270,21 @@ export function KorivaLivePreview() {
                   defaults: data.defaults,
                 }),
               );
+              // 2. Fallback: scan DOM for [data-cg-el] elements not yet in registry
+              const domEls = document.querySelectorAll("[data-cg-el]");
+              const fromDom: typeof elements[0][] = [];
+              domEls.forEach((el) => {
+                const id = el.getAttribute("data-cg-el")!;
+                if (elements.find((e) => e.id === id)) return; // already from registry
+                fromDom.push({
+                  id,
+                  section: id.split("_")[0].charAt(0).toUpperCase() + id.split("_")[0].slice(1),
+                  label: id.replace(/^[^_]+_/, "").replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()),
+                  type: el.tagName === "IMG" || el.getAttribute("data-type") === "image" ? "image" : "text",
+                  defaults: { content: el.textContent?.trim() || "" },
+                });
+              });
+              const allElements = [...elements, ...fromDom];
               const templateId =
                 document.documentElement.dataset.templateId ?? "unknown";
               const templateVersion =
@@ -271,7 +294,7 @@ export function KorivaLivePreview() {
                   type: "KORIVA_MANIFEST",
                   templateId,
                   templateVersion,
-                  elements,
+                  elements: allElements,
                 },
                 "*",
               );
