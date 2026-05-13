@@ -408,15 +408,15 @@ export default function GlowPage() {
       <div className="gl-hero-content">
         <div className="gl-hero-content-inner">
           <div className="gl-hero-tag reveal">Recovery · Float · Holistic Spa · Portland, OR</div>
-          <h1 data-cg-el="hero_headline_1" className="gl-hero-title reveal">
+          <h1 data-cg-el="hero_headline_1" className="gl-hero-title reveal" style={{ fontSize: 'var(--cg-el-hero_headline_1-size, clamp(2.4rem, 4.5vw, 4.2rem))' }}>
             Come in <em>stressed.</em><br />Leave <em>restored.</em>
           </h1>
-          <p data-cg-el="hero_subtitle" className="gl-hero-sub reveal">
+          <p data-cg-el="hero_subtitle" className="gl-hero-sub reveal" style={{ fontSize: 'var(--cg-el-hero_subtitle-size, 1.05rem)' }}>
             Portland&apos;s most intentional recovery studio. We offer float therapy, infrared sauna, cryotherapy, massage, and curated multi-modality rituals — all under one roof.
           </p>
           <div className="gl-hero-actions reveal">
-            <a data-cg-el="hero_cta_primary" href="#book" className="gl-btn-primary">Book a Session</a>
-            <a data-cg-el="hero_cta_secondary" href="#rituals" className="gl-btn-outline">Explore Rituals</a>
+            <a data-cg-el="hero_cta_primary" href="#book" className="gl-btn-primary" style={{ fontSize: 'var(--cg-el-hero_cta_primary-size, 0.85rem)' }}>Book a Session</a>
+            <a data-cg-el="hero_cta_secondary" href="#rituals" className="gl-btn-outline" style={{ fontSize: 'var(--cg-el-hero_cta_secondary-size, 0.85rem)' }}>Explore Rituals</a>
           </div>
         </div>
       </div>
