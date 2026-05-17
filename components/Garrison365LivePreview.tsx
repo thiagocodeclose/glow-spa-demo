@@ -4,8 +4,8 @@ import { createPortal } from "react-dom";
 
 declare global {
   interface Window {
-    __KORIVA_ANIM_OBSERVER__?: IntersectionObserver;
-    __KORIVA_REGISTRY__?: Map<
+    __GARRISON365_ANIM_OBSERVER__?: IntersectionObserver;
+    __GARRISON365_REGISTRY__?: Map<
       string,
       {
         el?: HTMLElement;
@@ -16,7 +16,7 @@ declare global {
   }
 }
 
-export interface KorivaElementPayload {
+export interface Garrison365ElementPayload {
   id: string;
   content?: string;
   fontSize?: number;
@@ -39,7 +39,7 @@ export interface KorivaElementPayload {
   focalX?: number;   // 0-100 — image focal point horizontal
   focalY?: number;   // 0-100 — image focal point vertical
   animation?: string; // 'none' | 'fade' | 'slide-left' | 'slide-right' | 'zoom' | 'slide-up'
-  sectionBg?: string; // for KORIVA_CUSTOMIZE section backgrounds
+  sectionBg?: string; // for GARRISON365_CUSTOMIZE section backgrounds
 }
 
 interface OverlayRect {
@@ -55,19 +55,19 @@ type DragType = "move" | "resize";
 type HandlePos = "nw" | "n" | "ne" | "e" | "se" | "s" | "sw" | "w";
 
 /**
- * KorivaLivePreview — mounts inside the template iframe.
+ * Garrison365LivePreview — mounts inside the template iframe.
  *
  * Features:
- *  • KORIVA_CUSTOMIZE / KORIVA_ELEMENT_UPDATE — live style overrides
- *  • KORIVA_EDIT_MODE — activates Canva-style canvas editing:
+ *  • GARRISON365_CUSTOMIZE / GARRISON365_ELEMENT_UPDATE — live style overrides
+ *  • GARRISON365_EDIT_MODE — activates Canva-style canvas editing:
  *      - Hover: dashed blue outline on [data-cg-el] elements
  *      - Click: blue selection overlay with label badge + 8 resize handles
  *      - Drag center: move element (CSS `translate` property, no layout disruption)
  *      - Drag handle: resize element (font-size)
- *      - Sends KORIVA_ELEMENT_CLICK / KORIVA_ELEMENT_MOVED / KORIVA_ELEMENT_RESIZED to parent
- *  • KORIVA_SELECT_ELEMENT — parent panel → iframe selection sync
+ *      - Sends GARRISON365_ELEMENT_CLICK / GARRISON365_ELEMENT_MOVED / GARRISON365_ELEMENT_RESIZED to parent
+ *  • GARRISON365_SELECT_ELEMENT — parent panel → iframe selection sync
  */
-export function KorivaLivePreview() {
+export function Garrison365LivePreview() {
   const [editMode, setEditMode] = useState(false);
   const [overlay, setOverlay] = useState<OverlayRect | null>(null);
   const [hoverOverlay, setHoverOverlay] = useState<OverlayRect | null>(null);
@@ -123,7 +123,7 @@ export function KorivaLivePreview() {
     function handler(e: MessageEvent) {
       if (!e.data?.type) return;
 
-      if (e.data.type === "KORIVA_CUSTOMIZE") {
+      if (e.data.type === "GARRISON365_CUSTOMIZE") {
         const p = e.data.payload as Record<string, string>;
         const root = document.documentElement;
         if (p.primary_color)
@@ -168,7 +168,7 @@ export function KorivaLivePreview() {
             ) as HTMLElement | null;
             if (!sectionEl) return;
             // Remove existing video bg if any
-            const existing = sectionEl.querySelector('.koriva-video-bg') as HTMLElement | null;
+            const existing = sectionEl.querySelector('.garrison365-video-bg') as HTMLElement | null;
             if (existing) existing.remove();
             if (!url) return;
             // Ensure section can contain absolute-positioned children
@@ -177,7 +177,7 @@ export function KorivaLivePreview() {
             sectionEl.style.overflow = 'hidden';
             // Create video element
             const wrapper = document.createElement('div');
-            wrapper.className = 'koriva-video-bg';
+            wrapper.className = 'garrison365-video-bg';
             wrapper.style.cssText = 'position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;';
             const video = document.createElement('video');
             video.src = url;
@@ -191,7 +191,7 @@ export function KorivaLivePreview() {
             // Ensure section content sits above video
             Array.from(sectionEl.children).forEach((child) => {
               const c = child as HTMLElement;
-              if (!c.classList.contains('koriva-video-bg')) {
+              if (!c.classList.contains('garrison365-video-bg')) {
                 c.style.position = 'relative';
                 c.style.zIndex = '1';
               }
@@ -201,14 +201,14 @@ export function KorivaLivePreview() {
         // site_content — dispatch to components
         if ((p as any).site_content) {
           window.dispatchEvent(
-            new CustomEvent("koriva:content", {
+            new CustomEvent("garrison365:content", {
               detail: (p as any).site_content,
             }),
           );
         }
         // logo_url / gym_name / colors / hero — dispatch to all brand-aware components
         window.dispatchEvent(
-          new CustomEvent("koriva:brand", {
+          new CustomEvent("garrison365:brand", {
             detail: {
               logo_url: (p as any).logo_url,
               gym_name: (p as any).gym_name,
@@ -245,7 +245,7 @@ export function KorivaLivePreview() {
         return;
       }
 
-      if (e.data.type === "KORIVA_EDIT_MODE") {
+      if (e.data.type === "GARRISON365_EDIT_MODE") {
         const active = !!e.data.payload?.active;
         setEditMode(active);
         if (!active) {
@@ -254,10 +254,10 @@ export function KorivaLivePreview() {
           stopEditing();
         }
         if (active) {
-          // Wait 2 frames so all useKorivaElement components have registered
+          // Wait 2 frames so all useGarrison365Element components have registered
           requestAnimationFrame(() =>
             requestAnimationFrame(() => {
-              const registry = window.__KORIVA_REGISTRY__;
+              const registry = window.__GARRISON365_REGISTRY__;
               if (!registry) return;
               const elements = Array.from(registry.entries()).map(
                 ([id, data]) => ({
@@ -291,7 +291,7 @@ export function KorivaLivePreview() {
                 document.documentElement.dataset.templateVersion ?? "1";
               window.parent?.postMessage(
                 {
-                  type: "KORIVA_MANIFEST",
+                  type: "GARRISON365_MANIFEST",
                   templateId,
                   templateVersion,
                   elements: allElements,
@@ -304,7 +304,7 @@ export function KorivaLivePreview() {
         return;
       }
 
-      if (e.data.type === "KORIVA_HOVER_ELEMENT") {
+      if (e.data.type === "GARRISON365_HOVER_ELEMENT") {
         const id = e.data.payload?.id;
         if (!id) {
           setHoverOverlay(null);
@@ -331,14 +331,14 @@ export function KorivaLivePreview() {
         return;
       }
 
-      if (e.data.type === "KORIVA_SELECT_ELEMENT") {
+      if (e.data.type === "GARRISON365_SELECT_ELEMENT") {
         const id = e.data.payload?.id;
         if (id) requestAnimationFrame(() => refreshOverlay(id));
         else setOverlay(null);
         return;
       }
 
-      if (e.data.type === "KORIVA_INLINE_EDIT_REQUEST") {
+      if (e.data.type === "GARRISON365_INLINE_EDIT_REQUEST") {
         const id = e.data.payload?.id as string | undefined;
         if (!id) return;
         const el = document.querySelector(
@@ -364,7 +364,7 @@ export function KorivaLivePreview() {
         sel?.addRange(range);
         setOverlay(null);
         window.parent?.postMessage(
-          { type: "KORIVA_INLINE_EDIT_START", payload: { id } },
+          { type: "GARRISON365_INLINE_EDIT_START", payload: { id } },
           "*",
         );
         return;
@@ -372,7 +372,7 @@ export function KorivaLivePreview() {
 
 
       // ── applyElementPayload — shared DOM/CSS updater ──
-      function applyElementPayload(p: KorivaElementPayload) {
+      function applyElementPayload(p: Garrison365ElementPayload) {
         const {
           id,
           content,
@@ -518,31 +518,31 @@ export function KorivaLivePreview() {
           cgEl.classList.remove('k-anim-done');
           if (animation && animation !== 'none') {
             cgEl.classList.add(`k-anim-${animation}`);
-            if (window.__KORIVA_ANIM_OBSERVER__) {
-              window.__KORIVA_ANIM_OBSERVER__.unobserve(cgEl);
-              window.__KORIVA_ANIM_OBSERVER__.observe(cgEl);
+            if (window.__GARRISON365_ANIM_OBSERVER__) {
+              window.__GARRISON365_ANIM_OBSERVER__.unobserve(cgEl);
+              window.__GARRISON365_ANIM_OBSERVER__.observe(cgEl);
             }
           }
         }
         window.dispatchEvent(
-          new CustomEvent<KorivaElementPayload>("koriva:element", {
+          new CustomEvent<Garrison365ElementPayload>("garrison365:element", {
             detail: p,
           }),
         );
       }
 
       // Batch update — admin sends all canvas_data in one shot for performance
-      if (e.data.type === "KORIVA_ELEMENT_BATCH") {
+      if (e.data.type === "GARRISON365_ELEMENT_BATCH") {
         const raw = e.data.payload;
-        const entries: KorivaElementPayload[] = Array.isArray(raw)
+        const entries: Garrison365ElementPayload[] = Array.isArray(raw)
           ? raw
           : Object.values(raw);
         entries.forEach((payload) => applyElementPayload(payload));
         return;
       }
 
-      if (e.data.type === "KORIVA_ELEMENT_UPDATE") {
-        const p = e.data.payload as KorivaElementPayload;
+      if (e.data.type === "GARRISON365_ELEMENT_UPDATE") {
+        const p = e.data.payload as Garrison365ElementPayload;
         applyElementPayload(p);
         if (overlay?.id === p.id) requestAnimationFrame(() => refreshOverlay(p.id));
         return;
@@ -564,16 +564,16 @@ export function KorivaLivePreview() {
       el.style.outline = "";
       el.style.cursor = "";
       const newContent = el.innerText.trim();
-      const payload: KorivaElementPayload = {
+      const payload: Garrison365ElementPayload = {
         id: editingId,
         content: newContent,
       };
       window.parent.postMessage(
-        { type: "KORIVA_ELEMENT_TEXT_CHANGED", payload },
+        { type: "GARRISON365_ELEMENT_TEXT_CHANGED", payload },
         "*",
       );
       window.dispatchEvent(
-        new CustomEvent("koriva:element", { detail: payload }),
+        new CustomEvent("garrison365:element", { detail: payload }),
       );
     }
     setEditingId(null);
@@ -603,7 +603,7 @@ export function KorivaLivePreview() {
       if (!el) {
         setOverlay(null);
         window.parent.postMessage(
-          { type: "KORIVA_ELEMENT_CLICK", payload: { id: null } },
+          { type: "GARRISON365_ELEMENT_CLICK", payload: { id: null } },
           "*",
         );
         return;
@@ -623,7 +623,7 @@ export function KorivaLivePreview() {
       };
       refreshOverlay(id);
       window.parent.postMessage(
-        { type: "KORIVA_ELEMENT_CLICK", payload: { id, computedColor, rect: elRect } },
+        { type: "GARRISON365_ELEMENT_CLICK", payload: { id, computedColor, rect: elRect } },
         "*",
       );
     };
@@ -764,42 +764,42 @@ export function KorivaLivePreview() {
       if (d.type === "move") {
         const newTx = Math.round(d.origTx + dx);
         const newTy = Math.round(d.origTy + dy);
-        const payload: KorivaElementPayload = {
+        const payload: Garrison365ElementPayload = {
           id: d.id,
           translateX: newTx,
           translateY: newTy,
         };
         window.parent.postMessage(
-          { type: "KORIVA_ELEMENT_MOVED", payload },
+          { type: "GARRISON365_ELEMENT_MOVED", payload },
           "*",
         );
         window.dispatchEvent(
-          new CustomEvent("koriva:element", { detail: payload }),
+          new CustomEvent("garrison365:element", { detail: payload }),
         );
       } else if (d.isImage) {
         const newScale = parseFloat(d.el.style.scale) || d.origScale;
-        const payload: KorivaElementPayload = {
+        const payload: Garrison365ElementPayload = {
           id: d.id,
           scale: Math.round(newScale * 1000) / 1000,
         };
         window.parent.postMessage(
-          { type: "KORIVA_ELEMENT_RESIZED", payload },
+          { type: "GARRISON365_ELEMENT_RESIZED", payload },
           "*",
         );
         window.dispatchEvent(
-          new CustomEvent("koriva:element", { detail: payload }),
+          new CustomEvent("garrison365:element", { detail: payload }),
         );
       } else {
         const newSize = Math.round(
           parseFloat(d.el.style.fontSize) || d.origFontSize,
         );
-        const payload: KorivaElementPayload = { id: d.id, fontSize: newSize };
+        const payload: Garrison365ElementPayload = { id: d.id, fontSize: newSize };
         window.parent.postMessage(
-          { type: "KORIVA_ELEMENT_RESIZED", payload },
+          { type: "GARRISON365_ELEMENT_RESIZED", payload },
           "*",
         );
         window.dispatchEvent(
-          new CustomEvent("koriva:element", { detail: payload }),
+          new CustomEvent("garrison365:element", { detail: payload }),
         );
       }
       dragRef.current = null;
